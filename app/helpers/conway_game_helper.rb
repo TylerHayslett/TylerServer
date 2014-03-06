@@ -1,0 +1,2 @@
+module ConwayGameHelper
+end

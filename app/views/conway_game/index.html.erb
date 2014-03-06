@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="ConwayRules.js"></script>
+
+<style type="text/css">
+.button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+	background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+	background-color:#77d42a;
+	-webkit-border-top-left-radius:19px;
+	-moz-border-radius-topleft:19px;
+	border-top-left-radius:19px;
+	-webkit-border-top-right-radius:19px;
+	-moz-border-radius-topright:19px;
+	border-top-right-radius:19px;
+	-webkit-border-bottom-right-radius:19px;
+	-moz-border-radius-bottomright:19px;
+	border-bottom-right-radius:19px;
+	-webkit-border-bottom-left-radius:19px;
+	-moz-border-radius-bottomleft:19px;
+	border-bottom-left-radius:19px;
+	text-indent:0px;
+	border:1px solid #268a16;
+	display:inline-block;
+	color:#306108;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	font-style:normal;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #aade7c;
+	z-index:2;
+}
+.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+	background-color:#5cb811;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+
+#Dead
+{
+opacity:0.0;
+z-index:-1;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+#Dead:hover
+{
+opacity:0.5;
+z-index:-1;
+filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+#Alive
+{
+opacity:1.0;
+z-index:-1;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+#Alive:hover
+{
+opacity:0.8;
+z-index:-1;
+filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+
+</style>
+</head>
+
+
+
+<body bgcolor="#878763">
+<p id="board"></p>
+<p1 id="button"><button type="button" class="button" onclick="go()">Start!</button></p1>
+<p2 id="button"><button type="button" class="button" onclick="randomize()">Randomize!</button></p2>
+<p3 id="button"><button type="button" class="button" onclick="clearBoard()">Clear!</button></p3>
+<p4 id="button"><button type="button" class="button" onclick="update()">Step</button></p4>
+<%= button_to "About", href="/aboutpage/about", :id => "button", :class => "button", title: "What's this all about?", :method => :get %>
+</body>
+
+
+<script>
+$(function(){
+   buildBoard();
+});
+
+$('p').on("click", "img", function(event) {
+	$( this ).attr( "id", updateCell( $( this ).attr( "coord" ) ) );
+});
+</script>
+</html> 
